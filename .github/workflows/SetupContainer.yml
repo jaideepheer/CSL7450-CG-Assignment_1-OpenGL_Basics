@@ -32,7 +32,7 @@ jobs:
           file: ./.devcontainer/Dockerfile
           push: true
           tags: |
-            devenv:latest
+            ghcr.io/jaideepheer/CSL7450-CG-Assignment_1-OpenGL_Basics/devenv:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
