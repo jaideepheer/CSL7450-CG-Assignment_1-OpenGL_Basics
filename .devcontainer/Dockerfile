@@ -6,7 +6,7 @@ FROM mmozeiko/mingw-w64:latest
 
 # Setup mingw freeglut
 COPY ./setup_mingw_glut.sh /setup_mingw_glut.sh
-RUN chmod +X /setup_mingw_glut.sh && sudo bash /setup_mingw_glut.sh && rm -f /setup_mingw_glut.sh
+RUN chmod +X /setup_mingw_glut.sh && bash /setup_mingw_glut.sh && rm -f /setup_mingw_glut.sh
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   mesa-utils \
