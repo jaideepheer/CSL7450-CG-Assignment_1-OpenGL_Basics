@@ -32,7 +32,7 @@ jobs:
           file: ./.devcontainer/Dockerfile
           push: true
           tags: |
-            ghcr.io/devenv:latest
+            devenv:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
