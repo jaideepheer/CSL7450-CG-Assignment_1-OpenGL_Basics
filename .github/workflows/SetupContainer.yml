@@ -2,7 +2,8 @@ name: SetupContainer
 
 on:
   push:
-    branches: master
+    paths: 
+    - '.devcontainer/*'
 
 jobs:
   SetupContainer:
