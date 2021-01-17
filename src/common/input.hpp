@@ -24,7 +24,7 @@ class MousePointsHandler : public MouseHandler
 
 public:
     std::array<Point2<T>, N> points;
-    MousePointsHandler(std::array<Point2<T>, N> tracking_points = std::array{Point2<T>{0, 0}, Point2<T>{0, 0}}, size_t mouse_grab_button = GLUT_LEFT_BUTTON) : points(tracking_points), grab_button(mouse_grab_button) {}
+    MousePointsHandler(size_t mouse_grab_button = GLUT_LEFT_BUTTON) : grab_button(mouse_grab_button) {}
     struct
     {
         // The distance at which a mouse click will grab the nearest point.

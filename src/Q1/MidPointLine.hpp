@@ -23,7 +23,7 @@ void draw_line(__draw_line_args args)
     auto &iterate_target = isXMainAxis ? b.x : b.y;
     auto &other_axis = isXMainAxis ? a.y : a.x;
     // Swap if drawing along y axis
-    if(!isXMainAxis)
+    if (!isXMainAxis)
     {
         // swap loop iteration variables to draw along y axis
         std::swap(dp.x, dp.y);

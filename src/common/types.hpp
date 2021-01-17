@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <math.h>
+#include <algorithm>
 
 // Get sign
 // https://stackoverflow.com/a/4609795/10027894
@@ -31,7 +32,7 @@ struct Point2
     // Returns the magnitude.
     T magnitude()
     {
-        return sqrt(x*x + y*y);
+        return sqrt(x * x + y * y);
     }
     std::tuple<T, T> to_tuple()
     {
@@ -52,7 +53,7 @@ struct Point2
     // Returns new point with normalised values.
     Point2<T> norm()
     {
-        return *this/this->magnitude();
+        return *this / this->magnitude();
     }
     // To string
     std::string to_string()
@@ -62,10 +63,16 @@ struct Point2
         return s.str();
     }
     // Cast to new type
-    template<typename Q>
+    template <typename Q>
     Point2<Q> cast()
     {
         return {Q(x), Q(y)};
+    }
+    // Products
+    // Returns the z-axis value of the cross product of this point with the other.
+    T cross_product_z(const Point2<T> &other)
+    {
+        return x * other.y - y * other.x;
     }
     // Operators
     // https://en.cppreference.com/w/cpp/language/operators
@@ -131,6 +138,43 @@ struct Range
     std::tuple<T, T> to_tuple()
     {
         return {min, max};
+    }
+    // To string
+    std::string to_string()
+    {
+        std::ostringstream s;
+        s << "(" << min << "," << max << ")";
+        return s.str();
+    }
+};
+
+// Defines the 2D bounding box of the given N points.
+template <typename T, size_t N>
+struct BoundingBox2
+{
+    Range<T> x_range{T(0), T(0)}, y_range{T(0), T(0)};
+    BoundingBox2(std::array<Point2<T>, N> points)
+    {
+        x_range = {points[0].x, points[0].x};
+        y_range = {points[0].y, points[0].y};
+        for(const auto& p:points)
+        {
+            x_range.min = std::min(p.x, x_range.min);
+            x_range.max = std::max(p.x, x_range.max);
+            y_range.min = std::min(p.y, y_range.min);
+            y_range.max = std::max(p.y, y_range.max);
+        }
+    }
+    // Returns the vertices of this box in order,
+    // bottom-left, top-left, top-right, bottom-right
+    std::tuple<Point2<T>, Point2<T>, Point2<T>, Point2<T>> vertices()
+    {
+        return {
+            Point2<T>{x_range.min, y_range.min},
+            Point2<T>{x_range.min, y_range.max},
+            Point2<T>{x_range.max, y_range.max},
+            Point2<T>{x_range.max, y_range.min},
+        };
     }
 };
 

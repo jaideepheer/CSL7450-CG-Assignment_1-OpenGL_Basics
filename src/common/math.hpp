@@ -1,6 +1,7 @@
 #pragma once
 #include <GL/freeglut.h>
 #include "types.hpp"
+#include <math.h>
 
 template <typename T>
 Point2<T> window_to_world(Point2<T> screen_point)
@@ -17,5 +18,5 @@ Point2<T> window_to_world(Point2<T> screen_point)
     double objX, objY, objZ;
     // unproject
     gluUnProject(screen_point.x, view[3]-screen_point.y, 0.5, m, p, view, &objX, &objY, &objZ);
-    return {objX, objY};
+    return {(T)round(objX), (T)round(objY)};
 }

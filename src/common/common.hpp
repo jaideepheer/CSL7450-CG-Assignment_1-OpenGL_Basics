@@ -5,3 +5,5 @@
 #include "types.hpp"
 #include "window.hpp"
 #include "text.hpp"
+#include "input.hpp"
+#include "math.hpp"

@@ -20,11 +20,6 @@ void display(void)
     glutSwapBuffers();
 }
 
-void onReshape(int w, int h)
-{
-    glutPostRedisplay();
-}
-
 int main(int argc, char **argv)
 {
     // Create window
