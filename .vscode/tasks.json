@@ -2,14 +2,20 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "meson",
-			"target": "src/Q1",
-			"mode": "build",
-			"problemMatcher": [
-				"$gcc"
-			],
+			"type": "shell",
 			"group": "build",
-			"label": "Meson: Build src/Q1"
+			"label": "Rebuild builddir native",
+			"command": "rm -rf builddir && meson setup builddir",
+			"args": [],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"group": "build",
+			"label": "Rebuild builddir win_x64",
+			"command": "rm -rf builddir && meson setup builddir --cross-file cross-compile/x64-windows.ini",
+			"args": [],
+			"problemMatcher": []
 		}
 	]
 }
