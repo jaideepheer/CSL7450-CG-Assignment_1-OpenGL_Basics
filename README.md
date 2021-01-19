@@ -5,7 +5,7 @@
 
 ## Running
 
-- Download any of the executables from the releases page here.
+- Download any of the executables from the [releases page here](https://github.com/jaideepheer/CSL7450-CG-Assignment_1-OpenGL_Basics/releases/tag/latest).
 - Run it.
 
 ## Development/Compiling
