@@ -1,5 +1,6 @@
 #pragma once
-
+// https://stackoverflow.com/a/26065595/10027894
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include <GL/freeglut.h>
 #include "types.hpp"

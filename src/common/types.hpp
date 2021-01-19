@@ -13,6 +13,12 @@ int sign(T val)
     return (T(0) < val) - (val < T(0));
 }
 
+// Defines a angular direction
+enum AngularDirection
+{
+    CLOCKWISE, COUNTER_CLOCKWISE
+};
+
 // Defines a RGBA color
 struct Color
 {
@@ -29,8 +35,20 @@ struct Point2
 {
     T x;
     T y;
+    /**
+     * Returns a hash for the octant that this point lies in w.r.t the origin.
+     * This is a 4bit hash where each bit defines which side of the 4 octant axis this point lies in.
+     */
+    static short getOctantHash(T x, T y)
+    {
+        return ((x<=0)<<3) | ((y<=0)<<2) | ((y<=x)<<1) | ((-y<=x)<<0);
+    }
+    short getOctantHash()
+    {
+        return Point2<T>::getOctantHash(x, y);
+    }
     // Returns the magnitude.
-    T magnitude()
+    double magnitude()
     {
         return sqrt(x * x + y * y);
     }

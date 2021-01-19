@@ -16,6 +16,7 @@ public:
 template <typename T, size_t N>
 class MousePointsHandler : public MouseHandler
 {
+protected:
     int grab_button;
     struct
     {
@@ -35,8 +36,8 @@ public:
         // Mouse draged, update selected point
         if (state.selected_idx)
         {
-            auto& point = points[*(state.selected_idx)];
-            point = window_to_world(Point2<int>{x,y});
+            auto &point = points[*(state.selected_idx)];
+            point = window_to_world(Point2<int>{x, y});
         }
     }
     void glut_callback_mouse_func(int button, int mouse_state, int x, int y)
@@ -72,7 +73,7 @@ public:
 class MouseEventBus
 {
 public:
-    static std::vector<MouseHandler*> handlers;
+    static std::vector<MouseHandler *> handlers;
     static void register_mouse_handler(MouseHandler *handler)
     {
         handlers.push_back(handler);
@@ -97,4 +98,4 @@ public:
     }
 };
 
-std::vector<MouseHandler*> MouseEventBus::handlers = {};
+std::vector<MouseHandler *> MouseEventBus::handlers = {};

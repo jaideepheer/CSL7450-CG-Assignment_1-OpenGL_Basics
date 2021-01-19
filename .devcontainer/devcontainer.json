@@ -2,12 +2,12 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.154.2/containers/cpp
 {
 	"name": "OpenGL",
-	// "image": "jonstonchan/opengl:latest",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick an Debian / Ubuntu OS version: debian-10, debian-9, ubuntu-20.04, ubuntu-18.04
-		// "args": { "VARIANT": "ubuntu-20.04" }
-	},
+	"image": "ghcr.io/jaideepheer/csl7450-cg-assignment_1-opengl_basics/devenv:latest",
+	// "build": {
+	// 	"dockerfile": "Dockerfile",
+	// 	// Update 'VARIANT' to pick an Debian / Ubuntu OS version: debian-10, debian-9, ubuntu-20.04, ubuntu-18.04
+	// 	// "args": { "VARIANT": "ubuntu-20.04" }
+	// },
 
 	// Copy env variables to container config file
 	"initializeCommand": ["bash", "-i", ".devcontainer/copyenv.sh"],
