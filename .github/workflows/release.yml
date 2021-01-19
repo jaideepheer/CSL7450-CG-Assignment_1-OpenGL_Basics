@@ -38,6 +38,6 @@ jobs:
           tag_name: latest
           files: |
               ./bin/win/bin/*.exe
-              ./bin/native/bin/*.exe
+              ./bin/native/bin/*
         env:
           GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
